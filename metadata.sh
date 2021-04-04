@@ -1,35 +1,29 @@
 #!/bin/bash
 
-# assign the action
-ACTION=${1:-launch}
+# assign variables
+ACTION=${1}
 
-# display first provided argument
-if [ -c "$1" ]
-         then
-              echo "Create $ $ACTION{$1}:rds-message.txt"
-         else
-              echo "Initiating $ACTION."
-fi
+function create_file() {
 
+touch "${1}-rds-message.txt"
+}
 
--c or --create Create_file function
-Create file:
-           $${0) -c rds-message.txt
-           $ {0} {-d} --create} <rds-message.txt>
-           -d|--create file
+function display_help() {
 
-           nc -vz <RDS instance endpoint> 3306
+cat <<EOF
+Usage: ${0} {-c|--create} ecoweb1-identity.json
 
--c or --create Create_file function
-Craete file: 
-            $${0} -c ecoweb1-identity.json
+OPTIONS:
+       -c | --create   Create a new file
 
--v or --version==0.1.0
+-v or --version=0.1.0
 
-if [ -v or --version "$1" ]
-         then
-              echo "0.1.0""
-         else
-              echo "No action to display."
-fi
+EOF
+}
 
+case "$ACTION" in
+       -c|--create)
+               create_file "{
+               ;;
+       *)
+       echo "Usage ${0} {-c}"
